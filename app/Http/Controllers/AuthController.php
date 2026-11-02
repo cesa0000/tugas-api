@@ -17,11 +17,11 @@ class AuthController extends Controller
             'password' => 'required|string|min:6',
         ]);
 
-        $user = User::create([
+        $user = User::create([  
             'name'     => $validated['name'],
             'email'    => $validated['email'],
             'password' => Hash::make($validated['password']),
-            'role'     => 'user',
+            'role'     => 'customer',
         ]);
 
         $token = $user->createToken('auth_token')->plainTextToken;
